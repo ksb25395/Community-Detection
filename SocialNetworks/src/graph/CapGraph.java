@@ -33,7 +33,7 @@ public class CapGraph implements Graph {
 	Stack<Integer> nodeStack = new Stack<>();
 	
 	//List of all edges to easily retrieve a given edge
-	private List<Edge> graphEdges;
+	private Set<Edge> graphEdges;
 	
 	//Number of Nodes and edges in our graph
 	private int numNodes;
@@ -50,7 +50,7 @@ public class CapGraph implements Graph {
 	 */
 	public CapGraph() {
 		graphNodes = new HashMap<>();
-		graphEdges = new ArrayList<>();
+		graphEdges = new HashSet<>();
 		numEdges = 0;
 		numNodes = 0;
 		edgeBetweennessMap = new HashMap<>();
