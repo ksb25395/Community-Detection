@@ -6,10 +6,12 @@ Data Structures Specialization:
 Capstone: Analyzing (Social) Network Data
 https://www.coursera.org/learn/intermediate-programming-capstone
 
-Authored by UCSD MOOC Team:
+Skeleton Code and automatic graders are authored by UCSD MOOC Team:
 Mia Minnes, Christine Alvarado, Leo Porter, Alec Brickner
 and Adam Setters
+
 Date: 3/21/2016
+
 -------------------------------------------------------------------------
 
 -------------------------[ DESCRIPTION ]----------------------------------
@@ -20,14 +22,14 @@ assignments. No code will be provided for the capstone project.
 
 ---------------------------[ FILES ]-------------------------------------
 
-Below are the files provided for the warm-up assignment in week 1:
+Below are the skeleton files provided for the warm-up assignment in week 1:
 
-graph.Graph.java
-graph.CapGraph.java
-util.GraphLoader.java
-graph.grader.Grader.java
-graph.grader.EgoGrader.java
-graph.grader.SCCGrader.java
+graph.Graph.java - Graph Interface
+graph.CapGraph.java - Implements methods 
+util.GraphLoader.java - Implement methods in Graph.java and additional methods
+graph.grader.Grader.java - Interface 
+graph.grader.EgoGrader.java -Grades the Ego Network.
+graph.grader.SCCGrader.java - Grades the SCCs
 
 Data files and information about them can be found in the 
 data/ directory.
