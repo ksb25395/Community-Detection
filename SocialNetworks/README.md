@@ -12,15 +12,13 @@ and Adam Setters
 
 Date: 3/21/2016
 
--------------------------------------------------------------------------
-
--------------------------[ DESCRIPTION ]----------------------------------
+DESCRIPTION
 
 The files provided are skeleton code, as well as grading previews and 
 testing files to be used in completing the course programming 
 assignments. No code will be provided for the capstone project.
 
----------------------------[ FILES ]-------------------------------------
+FILES
 
 Below are the skeleton files provided for the warm-up assignment in week 1:
 
