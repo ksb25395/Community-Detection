@@ -1,10 +1,9 @@
 # Community-Detection
-This project is done as a final Capstone project for the Coursera OOP Specialization by UC San Deigo
-
 Community Detection in Complex Networks.
 
 Detect Communities in Complex Networks using Girvan Newman Algorithm based on Betweenness Measure and the Newman's Fast Greedy Algorithm for community detection using modularity.
 
-We can run the Girvan Newman algorithm using the Main method as a driver in CapGraph.java
+## Running
+* To see the Girvan Newman algorithm in action, run the `main` method as a driver in `CapGraph.java`
 
-We can run the Newman's greedy algorithm by using Main method as a driver in FastNewmanImpl.java
+* To see the Newman's greedy algorithm int action, run the `main` method as a driver in `FastNewmanImpl.java`

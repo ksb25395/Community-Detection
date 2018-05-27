@@ -85,7 +85,7 @@ public class FastNewmanImpl {
 				for (Integer keyTwo : prevCommunity.keySet()) {
 					List<Integer> commTwo = prevCommunity.get(keyTwo);
 					
-					if(keyOne == keyTwo) {
+					if (keyOne == keyTwo) {
 						continue;
 					}
 					
@@ -93,7 +93,7 @@ public class FastNewmanImpl {
 					double tempDeltaQ = new FastNewman(inputGraph).dQ(commOne, commTwo);
 					
 					// Update if tempdeltaQ is higher than deltaQ.
-					if(tempDeltaQ > deltaQ) {
+					if (tempDeltaQ > deltaQ) {
 						deltaQ = tempDeltaQ;
 						communityIdOne = keyOne;
 						communityIdTwo = keyTwo;

@@ -144,7 +144,7 @@ public class SCCGrader extends Grader {
                 while (j < sccs.size()) {
                     // check if answer contains learners scc
                     if (scc != null && !answer.contains(scc)) {
-                        if(!testFailed) {
+                        if (!testFailed) {
                             testFailed = true;
                             feedback += "FAILED. ";
                         }
