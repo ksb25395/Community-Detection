@@ -6,4 +6,4 @@ Detect Communities in Complex Networks using Girvan Newman Algorithm based on Be
 ## Running
 * To see the Girvan Newman algorithm in action, run the `main` method as a driver in `CapGraph.java`
 
-* To see the Newman's greedy algorithm int action, run the `main` method as a driver in `FastNewmanImpl.java`
+* To see the Newman's greedy algorithm in action, run the `main` method as a driver in `FastNewmanImpl.java`
