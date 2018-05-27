@@ -44,7 +44,7 @@ public class FastNewmanImpl {
 		this.inputGraph = graph;
 		int V = inputGraph.getNumNodes();
 		
-		// V - 1 iterations of running the cluster() method.
+		// V - 1 iterations of running the merge() method.
 		numSteps = V - 1;
 		
 		// Initialize result.
