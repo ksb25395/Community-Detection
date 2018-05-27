@@ -1,17 +1,16 @@
-/-------------------------------------------------------------------------
-/ Starter Code for Capstone Project in the
-/ Java Programming: Object Oriented Design of 
-/ Data Structures Specialization:
-/
-/ Capstone: Analyzing (Social) Network Data
-/ https://www.coursera.org/learn/intermediate-programming-capstone
-/
-/ Authored by UCSD MOOC Team:
-/ Mia Minnes, Christine Alvarado, Leo Porter, Alec Brickner
-/ and Adam Setters
-/
-/ Date: 3/21/2016
-/-------------------------------------------------------------------------
+-------------------------------------------------------------------------
+Starter Code for Capstone Project in the
+Java Programming: Object Oriented Design of 
+Data Structures Specialization:
+
+Capstone: Analyzing (Social) Network Data
+https://www.coursera.org/learn/intermediate-programming-capstone
+
+Authored by UCSD MOOC Team:
+Mia Minnes, Christine Alvarado, Leo Porter, Alec Brickner
+and Adam Setters
+Date: 3/21/2016
+-------------------------------------------------------------------------
 
 -------------------------[ DESCRIPTION ]----------------------------------
 
