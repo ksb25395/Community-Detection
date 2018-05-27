@@ -9,7 +9,7 @@ package graph.grader;
 
 public abstract class Grader implements Runnable {
 	
-	protected static final int TESTS = 10;
+    protected static final int TESTS = 10;
     public String feedback = "";
     public int correct = 0;
 
