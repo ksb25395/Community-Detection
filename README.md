@@ -1,4 +1,6 @@
 # Community-Detection
+This project is done as a final Capstone project for the Coursera OOP Specialization by UC San Deigo.
+
 Community Detection in Complex Networks.
 
 Detect Communities in Complex Networks using Girvan Newman Algorithm based on Betweenness Measure and the Newman's Fast Greedy Algorithm for community detection using modularity.
