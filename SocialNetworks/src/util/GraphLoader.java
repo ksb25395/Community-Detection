@@ -18,7 +18,7 @@ public class GraphLoader {
      * to a "from" vertex and a "to" vertex.
      */ 
     public static void loadGraph(graph.Graph g, String filename) {
-        Set<Integer> seen = new HashSet<Integer>();
+        Set<Integer> seen = new HashSet<>();
         Scanner sc;
         try {
             sc = new Scanner(new File(filename));
@@ -41,7 +41,6 @@ public class GraphLoader {
             }
             g.addEdge(v1, v2);
         }
-        
         sc.close();
     }
 }

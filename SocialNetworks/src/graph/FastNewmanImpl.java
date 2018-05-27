@@ -12,22 +12,22 @@ import util.GraphLoader;
  * 
  * Implementation of Newman's Fast Greedy agglomerative algorithm for community
  * detection.We calculate the communities using the idea that best choices for 
- * communities happen when the 'quality function', the modularity Q is maximized 
+ * communities happen when the 'quality function', the modularity Q is maximized.
  * 
  * We greedily merge two communities which result in the max increase or minimum
- * decrease in dQ, the change in modularity resulting from merging two communities
+ * decrease in dQ, the change in modularity resulting from merging two communities.
  * 
  * Modularity maximization is an NP Hard problem so what we are now doing is 
- * an approximation algorithm
+ * an approximation algorithm.
  * 
  */
 public class FastNewmanImpl {
 	
-	//input graph on which algorithm operates
+	// Input graph on which algorithm operates.
 	private CapGraph inputGraph;
 	
-	//number of steps of iteration
-	private int numSteps;
+	// Number of steps of iteration
+	private final int numSteps;
 	
 	/*
 	 * result contains the set of communities for each
@@ -36,128 +36,122 @@ public class FastNewmanImpl {
 	 * of vertices as independent communities and as we
 	 * keep merging the subsequent steps contain the 
 	 * communities with each community having the lowest
-	 * member as the 'leader'
+	 * member as the 'leader'.
 	 */
 	Map<Integer, Map<Integer, List<Integer>>> result;
 	
-	//Constructor taking CapGraph as argument
 	public FastNewmanImpl(CapGraph graph) {
 		this.inputGraph = graph;
 		int V = inputGraph.getNumNodes();
 		
-		//V - 1 iterations of running the cluster() method
+		// V - 1 iterations of running the cluster() method.
 		numSteps = V - 1;
 		
-		//Initialize result
+		// Initialize result.
 		result = new HashMap<Integer, Map<Integer, List<Integer>>>();
 		
-		//Initial list of communities with each node as its own community
+		// Initial list of communities with each node as its own community.
 		Map<Integer, List<Integer>> init = new HashMap<>();
 		
-		for(int node : inputGraph.getNodes()) {
+		for (int node : inputGraph.getNodes()) {
 			List<Integer> list = new ArrayList<>();
-			
 			list.add(node);
-			
 			init.put(node, list);
 		}
-//		System.out.println(init + "\n\n\n");
+		//System.out.println(init + "\n\n\n");
 		result.put(0, init);
 	}
 	
 	public void merge() {
-		//When all nodes are disconnected, modularity = 0
+		// When all nodes are disconnected, modularity = 0.
 		double mod = 0;
 		
 		/*
-		 * Join two communities with highest increase in dQ each of the numsSteps steps
+		 * Join two communities with highest increase in dQ each of the numsSteps steps.
 		 */
-		for(int i = 1; i <= numSteps; i++) {
+		for (int i = 1; i <= numSteps; i++) {
 			int prev = i - 1;
 			
-			//previous community arrangement for iteration i - 1
+			// previous community arrangement for iteration i - 1
 			Map<Integer, List<Integer>> prevCommunity = result.get(prev);
 			
-			//we find out the maximum increase in modularity upon merging
-			//any two communities
+			// We find out the maximum increase in modularity upon merging any two communities.
 			double deltaQ = Double.NEGATIVE_INFINITY;
 			int communityIdOne = -1;
 			int communityIdTwo = -1;
 			
-			for(Integer keyOne : prevCommunity.keySet()) {
+			for (Integer keyOne : prevCommunity.keySet()) {
 				List<Integer> commOne = prevCommunity.get(keyOne);
-				for(Integer keyTwo : prevCommunity.keySet()) {
+				for (Integer keyTwo : prevCommunity.keySet()) {
 					List<Integer> commTwo = prevCommunity.get(keyTwo);
 					
-					if(keyOne == keyTwo)
+					if(keyOne == keyTwo) {
 						continue;
+					}
 					
-					//calculate deltaQ upon merging commOne and commTwo
+					// Calculate deltaQ upon merging commOne and commTwo.
 					double tempDeltaQ = new FastNewman(inputGraph).dQ(commOne, commTwo);
 					
-					//Update if tempdeltaQ is higher than deltaQ
+					// Update if tempdeltaQ is higher than deltaQ.
 					if(tempDeltaQ > deltaQ) {
 						deltaQ = tempDeltaQ;
-						
 						communityIdOne = keyOne;
 						communityIdTwo = keyTwo;
-					}else if(tempDeltaQ == deltaQ) {
+					} else if (tempDeltaQ == deltaQ) {
 						//System.out.println("equal" + tempDeltaQ);
 					}
 				}
 			}
-			//increment modularity with max deltaQ
-			mod +=  deltaQ;
+			// Increment modularity with max deltaQ.
+			mod += deltaQ;
 			
-			//Get vertex label lists of the requisite communities
+			// Get vertex label lists of the requisite communities.
 			List<Integer> commOneList = prevCommunity.get(communityIdOne);
 			List<Integer> commTwoList = prevCommunity.get(communityIdTwo);
 			
-			//Merge both the communities
+			// Merge both the communities.
 			List<Integer> mergeCommList = new ArrayList<>();
 			mergeCommList.addAll(commOneList);
 			mergeCommList.addAll(commTwoList);
 			
-			//update leaders for communities
+			// Update leaders for communities.
 			Map<Integer, List<Integer>> currentCommunity = new HashMap<>();
 			
-			for(Integer prevKey : prevCommunity.keySet()) {
-				if(prevKey != communityIdOne && prevKey != communityIdTwo) {
-					//Keep leaders of other communities the same
+			for (Integer prevKey : prevCommunity.keySet()) {
+				if (prevKey != communityIdOne && prevKey != communityIdTwo) {
+					// Keep leaders of other communities the same.
 					currentCommunity.put(prevKey, prevCommunity.get(prevKey));
-				}else {
-//					System.out.println(deltaQ + " " + prevKey + ": Merge!");
+				} else {
+					//System.out.println(deltaQ + " " + prevKey + ": Merge!");
 				}
 			}
 			
-			//update the leader for merged community
-			int lesser = communityIdOne < communityIdTwo ? communityIdOne : communityIdTwo;
+			// Update the leader for merged community.
+			int lesser = (communityIdOne < communityIdTwo) ? communityIdOne : communityIdTwo;
 			currentCommunity.put(lesser, mergeCommList);
 			
-			//update results of current iteration
+			// Update results of current iteration.
 			result.put(i, currentCommunity);
 			
-//			System.out.println(currentCommunity + "\n\n\n");
+			//System.out.println(currentCommunity + "\n\n\n");
 			
 			/*
-			 * Everytime a maxima of Q is reached, in the next iteration
+			 * Every time a maxima of Q is reached, in the next iteration
 			 * dQ < 0. Then we can print the previous community as a
 			 * 'greedily' optimal community arrangement since it has 
 			 * locally maximal modularity. 
 			 */
-			if(deltaQ < 0) {
-				//maxima modularity
+			if (deltaQ < 0) {
+				// maxima modularity
 				System.out.println(mod - deltaQ);
-				
-				//maxima community
+				// maxima community
 				System.out.println(prevCommunity);
 			}
 		}
 	}
 
-	//Main Driver for merge()
+	// Main Driver for merge().
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		long begin = System.nanoTime();
 		CapGraph g = new CapGraph();
 		GraphLoader.loadGraph(g, "./data/foodweb_big.txt");
@@ -165,7 +159,7 @@ public class FastNewmanImpl {
 		FastNewmanImpl impl = new FastNewmanImpl(g);
 		
 		impl.merge();
-		System.out.println("\n\n\n" + (double)(System.nanoTime() - begin) /1000000000);
+		System.out.println("\n\n\n" + (double)(System.nanoTime() - begin) / 1000000000);
 		
 		/*
 		 * 	Karate club results

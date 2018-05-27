@@ -19,9 +19,11 @@ import graph.CapGraph;
 import graph.Graph;
 
 public class EgoGrader extends Grader {
+	
     private static final int TESTS = 10;
 
-    public static void main(String[] args) {
+    @SuppressWarnings("deprecation")
+	public static void main(String[] args) {
         Grader grader = new EgoGrader();
         Thread thread = new Thread(grader);
         thread.start();
@@ -37,9 +39,9 @@ public class EgoGrader extends Grader {
             }
         }
         if (grader.correct < TESTS) {
-        	grader.feedback = "Some tests failed. Please check the following and try again:\nFailed tests will display the first mismatched lines of the output.\n" + grader.feedback;
+        		grader.feedback = "Some tests failed. Please check the following and try again:\nFailed tests will display the first mismatched lines of the output.\n" + grader.feedback;
         } else {
-        	grader.feedback = "All tests passed. Congrats!\n" + grader.feedback;
+        		grader.feedback = "All tests passed. Congrats!\n" + grader.feedback;
         }
         if (infinite) {
             grader.feedback += "Your program entered an infinite loop or took longer than 30 seconds to finish.";
@@ -75,15 +77,15 @@ public class EgoGrader extends Grader {
                         break;
                     }
 
-                    HashSet<Integer> check = new HashSet<Integer>();
-                    while(sc.hasNextInt()) {
+                    HashSet<Integer> check = new HashSet<>();
+                    while (sc.hasNextInt()) {
                         check.add(sc.nextInt());
                     }
                     
                     // Sets should be equal
                     if (!check.equals(others)) {
                         check.add(i);
-                        if(!check.equals(others)) {
+                        if (!check.equals(others)) {
                             feedback += "FAILED. Expected \"" + check + "\" for vertex #" + vertex + ", got \"" + others + "\".";
                             failed = true;
                             break;
