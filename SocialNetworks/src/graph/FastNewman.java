@@ -29,7 +29,7 @@ public class FastNewman {
 	 * dQ = e_ij + e_ji - 2*a_i*a_j
 	 * dQ = 2* (e_ij - a_i * a_j)
 	 */
-	public double dQ(List<Integer> commI, List<Integer> commJ) {
+	public double dQ(List<int> commI, List<Integer> commJ) {
 		// Get all the ID's of the two communities commI & commJ first in a Set.
 		Set<Integer> idSet_I = new HashSet<>();
 		idSet_I.addAll(commI);
