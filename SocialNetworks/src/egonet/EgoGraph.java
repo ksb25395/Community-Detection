@@ -19,18 +19,18 @@ import util.GraphLoader;
 public class EgoGraph implements Graph {
 	
 	// Number of Nodes and edges in our graph.
-	private int numNodes;
-	private int numEdges;
+	public int numNodes;
+	public int numEdges;
 
 	// An adjacency list of vertices and list of edges.
 	// The map stores the number of the node as a key and the Node as a value.
-	private Map<Integer, Node> graphNodes;
+	public Map<Integer, Node> graphNodes;
 	
 	// Stack to store a newly added vertex.
 	Stack<Integer> nodeStack;
 	
 	// List of all edges to easily retrieve a given edge.
-	private List<Edge> graphEdges;
+	public List<Edge> graphEdges;
 	
 	public EgoGraph() {
 		numNodes = 0;
@@ -51,9 +51,9 @@ public class EgoGraph implements Graph {
 	@Override
 	public void addEdge(int from, int to) {
 		// Add edge between to and from nodes. The directed edge is in the adjacency list of from.
-		Node fromNode = graphNodes.get(from);
+		Node startNode = graphNodes.get(from);
 		Edge edge = new Edge(from, to);
-		fromNode.getAdjList().add(edge);
+		startNode.getAdjList().add(edge);
 		graphEdges.add(edge);
 		numEdges++;
 	}
@@ -85,11 +85,11 @@ public class EgoGraph implements Graph {
 	@Override
 	public Graph getEgonet(int center) {
 		long time = System.nanoTime();
-		Node centerNode = graphNodes.get(center);
+		Node centerVertex = graphNodes.get(center);
 		Graph egoGraph = new EgoGraph();
 		// Add the center node
 		egoGraph.addVertex(center);
-		for (Edge adjEdge : centerNode.getAdjList()) {
+		for (Edge adjEdge : centerVertex.getAdjList()) {
 			// Add other end of the edge and add the edge
 			int otherEnd = adjEdge.getToNode();
 			egoGraph.addVertex(otherEnd);
