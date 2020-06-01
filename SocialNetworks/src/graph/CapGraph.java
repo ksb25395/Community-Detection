@@ -28,13 +28,13 @@ public class CapGraph implements Graph {
 	private Map<Integer, Node> graphNodes;
 	
 	// Stack to store a newly added vertex.
-	Stack<Integer> nodeStack;
+	Stack<int> nodeStack;
 	
 	// List of all edges to easily retrieve a given edge.
 	private Set<Edge> graphEdges;
 	
 	// To store the edge-betweenness for all edges of CapGraph
-	private Map<Edge, Double> edgeBetweennessMap;
+	private Map<Edge, double> edgeBetweennessMap;
 	
 	public CapGraph() {
 		numNodes = 0;

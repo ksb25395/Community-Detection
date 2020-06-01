@@ -29,7 +29,7 @@ public class FastNewman {
 	 * dQ = e_ij + e_ji - 2*a_i*a_j
 	 * dQ = 2* (e_ij - a_i * a_j)
 	 */
-	public double dQ(List<Integer> commI, List<Integer> commJ) {
+	public double dQ(List<int> commI, List<Integer> commJ) {
 		// Get all the ID's of the two communities commI & commJ first in a Set.
 		Set<Integer> idSet_I = new HashSet<>();
 		idSet_I.addAll(commI);
@@ -84,11 +84,7 @@ public class FastNewman {
 		double a_i = 0;
 		for (int i : idSet_I) {
 			for (int j : setI) {
-				if (idSet_J.contains(j)) {
-					a_i += inputGraph.isEdge(i, j) ? 1 : 0;
-				} else {
-					a_i += inputGraph.isEdge(i, j) ? 1 : 0;
-				}
+				a_i += inputGraph.isEdge(i, j) ? 1 : 0;
 			}
 		}
 		a_i /= (2 * inputGraph.getNumEdges());
@@ -101,11 +97,7 @@ public class FastNewman {
 		double a_j = 0;
 		for (int i : idSet_J) {
 			for (int j : setJ) {
-				if (idSet_I.contains(j)) {
-					a_j += inputGraph.isEdge(i, j) ? 1 : 0;
-				} else {
-					a_j += inputGraph.isEdge(i, j) ? 1 : 0;
-				}
+				a_j += inputGraph.isEdge(i, j) ? 1 : 0;
 			}
 		}
 		a_j /= (2 * inputGraph.getNumEdges());
