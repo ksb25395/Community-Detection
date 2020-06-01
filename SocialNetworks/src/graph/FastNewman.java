@@ -84,11 +84,7 @@ public class FastNewman {
 		double a_i = 0;
 		for (int i : idSet_I) {
 			for (int j : setI) {
-				if (idSet_J.contains(j)) {
-					a_i += inputGraph.isEdge(i, j) ? 1 : 0;
-				} else {
-					a_i += inputGraph.isEdge(i, j) ? 1 : 0;
-				}
+				a_i += inputGraph.isEdge(i, j) ? 1 : 0;
 			}
 		}
 		a_i /= (2 * inputGraph.getNumEdges());
@@ -101,11 +97,7 @@ public class FastNewman {
 		double a_j = 0;
 		for (int i : idSet_J) {
 			for (int j : setJ) {
-				if (idSet_I.contains(j)) {
-					a_j += inputGraph.isEdge(i, j) ? 1 : 0;
-				} else {
-					a_j += inputGraph.isEdge(i, j) ? 1 : 0;
-				}
+				a_j += inputGraph.isEdge(i, j) ? 1 : 0;
 			}
 		}
 		a_j /= (2 * inputGraph.getNumEdges());
