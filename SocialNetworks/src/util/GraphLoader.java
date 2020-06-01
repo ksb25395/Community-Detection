@@ -18,7 +18,7 @@ public class GraphLoader {
      * to a "from" vertex and a "to" vertex.
      */ 
     public static void loadGraph(graph.Graph g, String filename) {
-        Set<Integer> seen = new HashSet<>();
+        Set<integer> seen = new HashSet<>();
         Scanner sc;
         try {
             sc = new Scanner(new File(filename));
@@ -28,7 +28,7 @@ public class GraphLoader {
         }
         // Iterate over the lines in the file, adding new
         // vertices as they are found and connecting them with edges.
-        while (sc.hasNextInt()) {
+        while (sc.hasnextint()) {
             int v1 = sc.nextInt();
             int v2 = sc.nextInt();
             if (!seen.contains(v1)) {
