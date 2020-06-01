@@ -423,9 +423,6 @@ public class CapGraph implements Graph {
 	public static void main(String args[]) {
 		CapGraph graph = new CapGraph();
 		GraphLoader.loadGraph(graph, "./data/football.txt");
-		graph.printGraph();
-		
-		System.out.println();
 		
 		/*
 		 * We remove the edges with highest betweenness 
@@ -447,7 +444,6 @@ public class CapGraph implements Graph {
 			 * List of edges with highest Edge BW measure
 			 */
 			List<Edge> maxBW = graph.getMaxBW();
-			System.out.println(maxBW);
 			/*
 			 * Remove all edges with highest Edge BW
 			 */
@@ -456,7 +452,6 @@ public class CapGraph implements Graph {
 			
 			// At each step print the resulting communities
 			graph.printGraph();
-			System.out.println("\n\n\n\n");
 		}	
 	}
 
